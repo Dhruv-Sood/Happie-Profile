@@ -3,7 +3,7 @@ const Navbar = () => {
   return (
       <div className="navbar bg-base-100">
           <div className="flex-1">
-              <Link to="/"><div className="btn btn-ghost text-xl">Happie-Portfolio</div></Link>
+              <Link to="/"><div className="btn btn-ghost text-xl">Happie-Profile</div></Link>
               
           </div>
           <div className="flex-none">
