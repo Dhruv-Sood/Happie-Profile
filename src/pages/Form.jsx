@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';  // Adjust the import path based on your project structure
 import Navbar from "../components/Navbar";
@@ -32,6 +32,9 @@ const Form = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [emailError, setEmailError] = useState('');
 
+    const projectsEndRef = useRef(null);
+    const blogsEndRef = useRef(null);
+
     const handleChange = (event, index = null, type = null) => {
         const { name, value } = event.target;
 
@@ -53,6 +56,9 @@ const Form = () => {
             ...formData,
             projects: [...formData.projects, { projectName: '', projectDesc: '', projectImgLink: '', projectLink: '' }]
         });
+        setTimeout(() => {
+            projectsEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
     };
 
     const addBlog = () => {
@@ -60,6 +66,9 @@ const Form = () => {
             ...formData,
             blogs: [...formData.blogs, { blogTitle: '', blogImageUrl: '', blogLink: '' }]
         });
+        setTimeout(() => {
+            blogsEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
     };
 
     const handleSubmit = async (event) => {
@@ -107,7 +116,7 @@ const Form = () => {
                         <div className="flex flex-col">
                             <label className="font-semibold">LinkedIn Profile URL</label>
                             <input
-                                
+
                                 type="text"
                                 name="linkedin"
                                 className="p-2 border rounded"
@@ -144,7 +153,7 @@ const Form = () => {
 
                     <div className="mt-6">
                         <h2 className="text-xl font-bold mb-2">Projects</h2>
-                        <div className="space-y-4 overflow-y-scroll max-h-60">
+                        <div className="space-y-4 overflow-y-scroll max-h-[17rem]">
                             {formData.projects.map((project, index) => (
                                 <div key={index} className="space-y-2">
                                     <div className="flex flex-col">
@@ -193,6 +202,7 @@ const Form = () => {
                                     </div>
                                 </div>
                             ))}
+                            <div ref={projectsEndRef} />
                         </div>
                         <button type="button" className="mt-4 btn btn-primary" onClick={addProject}>
                             Add More Project(s)
@@ -239,6 +249,7 @@ const Form = () => {
                                     </div>
                                 </div>
                             ))}
+                            <div ref={blogsEndRef} />
                         </div>
                         <button type="button" className="mt-4 btn btn-secondary" onClick={addBlog}>
                             Add More Blog(s)
@@ -253,10 +264,10 @@ const Form = () => {
                         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                             <div className="bg-white p-5 rounded shadow-lg text-center">
                                 <p className="text-green-600 mb-4">Form submitted successfully!</p>
-                               <div className='w-full flex gap-4 justify-between'>
+                                <div className='w-full flex gap-4 justify-between'>
                                     <button className="btn" onClick={handleClosePopup}>Close</button>
                                     <Link to={`/portfolio/${formData.username}`}><button className="btn btn-accent">Open Portfolio</button></Link>
-                               </div>
+                                </div>
                             </div>
                         </div>
                     )}
