@@ -56,7 +56,7 @@ const Portfolio = () => {
             ) : (
                 <div>
                     <Navbar />
-                    <Hero name={userName} role={userData.role}/>
+                    <Hero name={userName} linkedinUrl={userData.linkedin} role={userData.role}/>
                     <Projects sectionTitle={"Projects"} data={projects} />
                     <Blogs bg={"bg-base-200"} data={blogs} />
                     <Footer />
