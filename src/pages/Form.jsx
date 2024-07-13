@@ -15,7 +15,8 @@ const Form = () => {
             {
                 projectName: '',
                 projectDesc: '',
-                projectImgLink: ''
+                projectImgLink: '',
+                projectLink: '' // Add projectLink field
             }
         ],
         blogs: [
@@ -35,7 +36,7 @@ const Form = () => {
 
         if (type === 'projects') {
             const projects = [...formData.projects];
-            projects[index] = { ...projects[index], [name]: value };
+            projects[index] = { ...projects[index], [name]: value }; // This will handle the new projectLink field
             setFormData({ ...formData, projects });
         } else if (type === 'blogs') {
             const blogs = [...formData.blogs];
@@ -53,6 +54,7 @@ const Form = () => {
             setFormData({ ...formData, [name]: value });
         }
     };
+
 
     const addProject = () => {
         setFormData({
@@ -149,7 +151,7 @@ const Form = () => {
                         
                     </div>
 
-                    <div className="project-details flex flex-col gap-4  h-[230px]">
+                    <div className="project-details flex flex-col gap-4 h-[230px]">
                         <div className='projects overflow-y-scroll flex flex-col gap-4'>
                             {formData.projects.map((project, index) => (
                                 <div key={index}>
@@ -183,11 +185,22 @@ const Form = () => {
                                             onChange={(e) => handleChange(e, index, 'projects')}
                                         />
                                     </label>
+                                    <label className="input input-bordered flex items-center gap-2">
+                                        <input
+                                            type="text"
+                                            name="projectLink"
+                                            className="grow"
+                                            placeholder="Project Link"
+                                            value={project.projectLink}
+                                            onChange={(e) => handleChange(e, index, 'projects')}
+                                        />
+                                    </label>
                                 </div>
                             ))}
                         </div>
                         <button className="btn" onClick={addProject}>Add Project</button>
                     </div>
+
 
                     <div className="blogs-detail flex flex-col gap-4 h-[230px]">
                         <div className='blogs overflow-y-scroll flex flex-col gap-4'>

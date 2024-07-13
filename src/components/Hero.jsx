@@ -1,6 +1,6 @@
 import Typewriter from 'typewriter-effect';
 
-const Hero = ({ name }) => {
+const Hero = ({ name, role }) => {
     return (
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -12,13 +12,13 @@ const Hero = ({ name }) => {
                         Hello World I am {name}
                         <Typewriter
                             options={{
-                                strings: [ 'A front-end developer', 'A React enthusiast', 'A Tailwind CSS lover'],
+                                strings: [role],
                                 autoStart: true,
                                 loop: true,
                             }}
                         /></h1>
                     <p className="py-6">
-                        A passionate front-end developer who loves to build web applications using React and Tailwind CSS.
+                        A passionate {role} who loves to build community and share knowledge.
                         This is my portfolio website where I showcase my projects and share my knowledge with the community.
                     </p>
                     <button className="btn btn-primary">Get Started</button>

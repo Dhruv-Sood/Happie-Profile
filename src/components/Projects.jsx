@@ -1,20 +1,26 @@
-const Projects = () => {
+import Card from "./Card"
+
+const Projects = ({ bg,data }) => {
+
+  
+  console.log(data);
   return (
-    <div  className="p-4">
-          <div className="card card-compact bg-base-100 w-96 shadow-xl" data-theme="cupcake">
-              <figure>
-                  <img
-                      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                      alt="Shoes" />
-              </figure>
-              <div className="card-body">
-                  <h2 className="card-title">Shoes!</h2>
-                  <p>If a dog chews shoes whose shoes does he choose?</p>
-                  <div className="card-actions justify-end">
-                      <button className="btn btn-primary">Buy Now</button>
-                  </div>
-              </div>
-          </div>
+    <div className={`p-4 flex flex-col gap-8 ${bg ? `${bg}` : ""}`}>
+      <h1 className="w-full text-center font-bold text-4xl">Projects</h1>
+      <div className="flex flex-wrap gap-4 justify-around">
+        {
+          data.map((blog) => {
+            return (
+              <Card
+                title={blog.projectName}
+                link={blog.projectLink} 
+                img={blog.projectImgLink}  
+                desc={blog.projectDesc}
+              />
+            );
+          })
+        }
+      </div>
     </div>
   )
 }
