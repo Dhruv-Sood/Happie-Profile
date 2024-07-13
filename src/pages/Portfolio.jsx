@@ -7,7 +7,7 @@ import Blogs from "../components/Blogs";
 
 import { useParams } from "react-router-dom";
 import { getDocs, collection } from "firebase/firestore";
-import { db } from '../firebase'; // Import db from firebaseconfig.js
+import { db } from '../firebase'; 
 
 const Portfolio = () => {
     const { userName } = useParams();
