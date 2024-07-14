@@ -107,7 +107,7 @@ const Form = () => {
 
     return (
         <div data-theme="halloween" className=''>
-            <Navbar />
+            <Navbar gitLogoWhite={true}/>
             <div className="flex items-center justify-center p-4" >
                 <form className="p-8 rounded-lg shadow-lg w-full max-w-2xl" >
                     <h1 className="text-2xl font-bold mb-6 text-center">Create Your Portfolio</h1>
