@@ -18,6 +18,12 @@ const Home = () => {
         }
     }
 
+    const handleKeyDown = (event) => {
+        if(event.key == 'Enter') {
+            handleGo();
+        }
+    }
+
     return (
         <div className=" imgbg">
             <Navbar />
@@ -32,6 +38,7 @@ const Home = () => {
                             placeholder="Search Portfolio"
                             className="p-2 border rounded w-full"
                             onChange={handleUserName}
+                            onKeyDown={handleKeyDown}
                         />
                         <button
                             className="bg-blue-500 text-white px-4 py-2 rounded w-full hover:bg-blue-600 transition"
